@@ -4,11 +4,15 @@ from azureiot import azureiot
 
 MESSAGE_FORMAT = "{'Probe':%s,'Temp':%s}"
 
+# Update this to the Bluetooth Mac Address of your iGrill - can be found via: sudo hcitool lescan
 address =  "70:91:8a:14:bc:5f"
 printoutloud = True
+
+# Replace <IotHubName> with your Azure IoT Hub Service Name.  Replace <SharedAcessKey> with your key.
 connectionString = 'HostName=<IotHubName>.azure-devices.net;SharedAccessKey=<SharedAccessKey>'
 iotclient = azureiot(connectionString)
-deviceId = 'raspberryPi3'
+# Replace with the DeviceId configured in Azure IoT Hub
+deviceId = '<deviceId>'
     
 class grillDelegate(btle.DefaultDelegate):
     def handleNotification(self, cHandle, data):
